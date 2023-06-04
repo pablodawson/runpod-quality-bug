@@ -120,11 +120,14 @@ class Predictor(BasePredictor):
                     width=width, height=height).images[0]
 
         print("Time to run inference: ", time.time() - timestart)
+
+        if (not os.path.exists("tmp")):
+            os.mkdir("tmp")
         
         output_path = f"tmp/output.png"
         output.save(output_path, optimize=True, quality=30)
         output_dirs.append(output_path)
-
+        
         return output_dirs
 
 
