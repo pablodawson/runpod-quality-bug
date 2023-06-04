@@ -11,7 +11,7 @@ import base64
 from io import BytesIO
 from PIL import Image
 
-prod = True
+prod = False
 
 MODEL = predict.Predictor()
 MODEL.setup()
@@ -101,7 +101,6 @@ def run(job):
     job_output = []
 
     for path in img_paths:
-
         buffered = BytesIO()
         Image.open(path).save(buffered, format="JPEG")
         output = base64.b64encode(buffered.getvalue()).decode('utf-8')
